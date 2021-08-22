@@ -39,7 +39,7 @@
 
 [Learn more about LAMP](https://www.ibm.com/cloud/learn/lamp-stack-explained)
 
-## Step 1: Update Packages
+### Step 1: Update Packages
 
 Before anything else, it's a good practice to always update repository and software packages. Run the following commands on your Ubuntu 20.04 OS.
 
@@ -48,7 +48,7 @@ Before anything else, it's a good practice to always update repository and softw
 sudo apt update && sudo apt upgrade
 ```
 
-## Step 2: Install Apache Web Server
+### Step 2: Install Apache Web Server
 
 Enter the following command to install Apache Web server. 
 
@@ -125,7 +125,7 @@ Enter agin the command sudo apache2ctl -t to check if the previous error is alre
 ```console
 sudo apache2ctl -t
 ```
-## Step 3: Install MariaDB
+### Step 3: Install MariaDB
 Enter the following commands.
 ```console
 sudo apt install mariadb-server mariadb-client
@@ -167,7 +167,7 @@ To exit:
 ```console
 exit;
 ```
-## Step 4: Install PHP7.4
+### Step 4: Install PHP7.4
 Install PHP7.4 and other modules by entering this command.
 ```console
 sudo apt install php7.4 libapache2-mod-php7.4 php7.4-mysql php-common php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-readline
@@ -191,5 +191,139 @@ Add this to the file:
 Press Ctrl+O to save, then press Enter to confirm. To exit, press Ctrl+X
 On you browser address bar, type localhost/info.php or 127.0.0.1/info.php to check the your server's PHP information.
 
-
+<!-- INSTALLING SUITECRM -->
 ## Installing SuiteCRM on Ubuntu
+
+### Step 1: Download SuiteCRM onto Your Ubuntu 20.04 Server
+```console
+wget https://suitecrm.com/files/162/SuiteCRM-7.11/525/SuiteCRM-7.11.18.zip
+```
+Install the unzip utility and unzip it to /var/www/ directory.
+```console
+sudo apt install unzip
+```
+```console
+sudo mkdir -p /var/www/
+```
+```console
+sudo unzip SuiteCRM-7.11.18.zip -d /var/www/
+```
+Make the name of the directory simplier.
+```console
+sudo mv /var/www/SuiteCRM-7.11.18/ /var/www/suitecrm
+```
+Change directory by typing: 
+```console
+cd /var/www/suitecrm
+```
+Then run the following commands to set the correct permissions.
+```console
+sudo chown -R www-data:www-data /var/www/suitecrm/
+```
+```console
+sudo chmod -R 755 .
+```
+```console
+sudo chmod -R 775 cache custom modules themes data upload
+```
+```console
+sudo chmod 775 config_override.php 2>/dev/null
+```
+### Step 2: Create a MariaDB Database and User for SuiteCRM
+Log in to MariaDB console.
+```console
+sudo mysql -u root
+```
+Create a new database for SuiteCRM. You can replace "suitecrm" according to your own preference.
+```console
+CREATE DATABASE suitecrm;
+```
+Grant all permissions  of the the database to the user by entering the following command. Replace the "suitecrm", "user" and "password" with the name of you database that you created in the previous step, and username and password according to your preference.
+
+```console
+GRANT ALL ON suitecrm.* TO 'user'@'localhost' IDENTIFIED BY 'password';
+```
+Flush privileges table and exit MariaDB console.
+```console
+FLUSH PRIVILEGES;
+```
+```console
+EXIT;
+```
+### Step 3: Install Required and Recommended PHP Modules.
+```console
+sudo apt install php-imagick php7.4-fpm php7.4-mysql php7.4-common php7.4-gd php7.4-imap php7.4-json php7.4-curl php7.4-zip php7.4-xml php7.4-mbstring php7.4-bz2 php7.4-intl php7.4-gmp
+```
+Disable the PHP module and prefork MPM module in Apache.
+```console
+sudo a2dismod php7.4
+```
+```console
+sudo a2dismod mpm_prefork
+```
+Run the following command to enable three modules in order to use PHP-FPM in Apache
+```console
+sudo a2enmod mpm_event proxy_fcgi setenvif
+```
+Restart Apache
+```console
+sudo systemctl restart apache2
+```
+### Step 4: Create Apache Virtual Host for SuiteCRM
+```console
+sudo nano /etc/apache2/sites-available/suitecrm.conf
+```
+Put the following text into the file. Replace suitecrm.example.com with your real domain name if you have one.
+```console
+<VirtualHost *:80>
+  ServerName suitecrm.example.com
+  DocumentRoot /var/www/suitecrm/
+
+  ErrorLog ${APACHE_LOG_DIR}/suitecrm_error.log
+  CustomLog ${APACHE_LOG_DIR}/suitecrm_access.log combined
+
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride All
+  </Directory>
+
+  <Directory /var/www/suitecrm/>
+    Options FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    allow from all
+  </Directory>
+
+Include /etc/apache2/conf-available/php7.4-fpm.conf
+
+</VirtualHost>
+```
+Save and close the file. Then enable this virtual host.
+```console
+sudo a2ensite suitecrm.conf
+```
+Then reload Apache.
+```console
+sudo systemctl reload apache2
+```
+Run the following command to change the minimum and amximum upload size.
+```console
+sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 20M/g' /etc/php/7.4/fpm/php.ini
+```
+Then restart PHP-FPM and Apache.
+```console
+sudo systemctl restart php7.4-fpm
+```
+```console
+sudo systemctl restart apache2
+```
+### Step 5: Finish Installation using the Web browser
+Type in the following on your web browser address bar to see the web-based intall wizard. Provide information to the required fields to complete the setup.
+```console
+http://localhost/install.php
+```
+or
+```console
+http://127.0.0.1/install.php
+```
+
