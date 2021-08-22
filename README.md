@@ -12,7 +12,7 @@
     <li><a href="#installing-suitecrm-on-ubuntu">Installing SuiteCRM on Ubuntu</a></li>
     <li><a href="#edit-hosts-file-on-ubuntu">Edit Hosts File on Ubuntu</a></li>
     <li><a href="#renaming-top-bar-menu-and-modules-suitecrm">Renaming Top Bar Menu and Modules SuiteCRM</a></li>
-    <li><a href="#install-dolibarr-on-ubuntu">Edit Hosts File on Ubuntu</a></li>
+    <li><a href="#install-dolibarr-on-ubuntu">Install Dolibarr on Ubuntu</a></li>
     <li><a href="#create-suitecrm-docker-container">Edit Hosts File on Ubuntu</a></li>
     <li><a href="#create-dolibarr-docker-container">Edit Hosts File on Ubuntu</a></li>
     <li><a href="#create-suitecrm-docker-container">Edit Hosts File on Ubuntu</a></li>
@@ -397,3 +397,84 @@ Start renaming the modules according to your preference.
 
 
 
+## Install Dolibarr on Ubuntu
+
+### Step 1: Create a database for Dolibarr
+Enter this command to access the mariadb console then enter the password.
+```console
+sudo mysql -u root -p
+```
+Create a database. You can change the "dolibarr" with anything you want.
+```console
+CREATE DATABASE dolibarr;
+```
+Create a database user called dolibarruser with new password. You can also change this according to your preference.
+```console
+CREATE USER 'dolibarruser'@'localhost' IDENTIFIED BY 'password';
+```
+Grant the user full access to the database.
+```console
+GRANT ALL ON dolibarr.* TO 'dolibarruser'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+```
+### Step 2: Download Dolibarr
+```console
+cd /tmp && wget https://sourceforge.net/projects/dolibarr/files/Dolibarr%20ERP-CRM/7.0.2/dolibarr-7.0.2.zip
+```
+Unzip and move Dolibarr to the appropriate directory by entering these commands:
+```console
+unzip dolibarr-7.0.2.zip
+```
+```console
+sudo mv dolibarr-7.0.2 /var/www/html/dolibarr
+```
+Provide permissions for Dolibarr to function.
+```console
+sudo chown -R www-data:www-data /var/www/html/dolibarr/
+```
+```console
+sudo chmod -R 755 /var/www/html/dolibarr/
+```
+Create Apache configuration file for dolibarr.
+```console
+sudo nano /etc/apache2/sites-available/dolibarr.conf
+```
+Add the follwing to the file. Change the values of ServerAdmin ,ServerName and DocumentRoot. Save and exit.
+```console
+<VirtualHost *:80>
+     ServerAdmin admin@example.com
+     DocumentRoot /var/www/html/dolibarr/htdocs
+     ServerName example.com
+     
+     <Directory /var/www/html/dolibarr/htdocs/>
+        Options +FollowSymlinks
+        AllowOverride All
+        Require all granted
+     </Directory>
+
+     ErrorLog ${APACHE_LOG_DIR}/error.log
+     CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+```
+Enable the configuration for dolibarr.
+```console
+sudo a2ensite dolibarr.conf
+```
+```console
+sudo a2enmod rewrite
+```
+Then restart Apache2
+```console
+sudo systemctl restart apache2.service
+```
+### Step 3: Finish installation with Web-based install wizard.
+Type in example.com, localhost/ or 127.0.0.1 on your browser address bar.
+
+
+![doli1](https://user-images.githubusercontent.com/88755620/129172219-511405d2-9fa4-425f-8ebe-7ebc499682a4.PNG)
+
+
+![doli2](https://user-images.githubusercontent.com/88755620/129172255-26e76905-99be-43c9-87d8-507b206db4e4.PNG)
+
+
+![doli3](https://user-images.githubusercontent.com/88755620/129172272-c1084286-8a84-4993-8c30-d11bbdd429b2.PNG)
