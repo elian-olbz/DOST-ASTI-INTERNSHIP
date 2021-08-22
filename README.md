@@ -13,9 +13,9 @@
     <li><a href="#edit-hosts-file-on-ubuntu">Edit Hosts File on Ubuntu</a></li>
     <li><a href="#renaming-top-bar-menu-and-modules-suitecrm">Renaming Top Bar Menu and Modules SuiteCRM</a></li>
     <li><a href="#install-dolibarr-on-ubuntu">Install Dolibarr on Ubuntu</a></li>
-    <li><a href="#create-suitecrm-docker-container">Edit Hosts File on Ubuntu</a></li>
+    <li><a href="#create-suitecrm-docker-container">Create SuiteCRM Docker Container</a></li>
     <li><a href="#create-dolibarr-docker-container">Create Dolibarr Docker Container</a></li>
-    <li><a href="#create-suitecrm-docker-container">Edit Hosts File on Ubuntu</a></li>
+    <li><a href="#edit-dolibarr-for-vendor-management">Edit Dolibarr for Vendor Management</a></li>
   </ol>
 </details>
 
