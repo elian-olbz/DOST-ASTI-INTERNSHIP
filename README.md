@@ -6,13 +6,11 @@
       <a href="#about-the-project">About The Project</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-      </ul>
+      <a href="#ubuntu-virtual-machine">Ubuntu Virtual Machine</a>
     </li>
     <li><a href="#installing-lamp-stack-on-ubuntu">Installing LAMP stack on Ubuntu</a></li>
     <li><a href="#installing-suitecrm-on-ubuntu">Installing SuiteCRM on Ubuntu</a></li>
+    <li><a href="#edit-hosts-file-on-ubuntu">Edit Hosts File on Ubuntu</a></li>
   </ol>
 </details>
 
@@ -25,10 +23,7 @@
 
 
 <!-- GETTING STARTED -->
-## Getting Started
-
-### Prerequisites
-
+## Ubuntu Virtual Machine
 
 
 
@@ -326,4 +321,29 @@ or
 ```console
 http://127.0.0.1/install.php
 ```
+<!-- EDIT HOSTS -->
+## Edit Hosts File on Ubuntu
 
+### Step 1: Open the hosts file with your text editor
+You can use any other text editor that you have like Nano or Vim. In this case, I am using Gedit.
+```console
+sudo -i gedit /etc/hosts
+```
+The file should look like this:
+```console
+127.0.0.1       localhost
+127.0.1.1       marl-VirtualBox
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+```
+### Step 2: Add new entry below localhost following the same format.
+You can change the suitecrm.example.com according to your preference.
+```console
+127.0.0.1       suitecrm.example.com
+```
+Save and close the file.
