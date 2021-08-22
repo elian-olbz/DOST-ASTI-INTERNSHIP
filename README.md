@@ -14,7 +14,7 @@
     <li><a href="#renaming-top-bar-menu-and-modules-suitecrm">Renaming Top Bar Menu and Modules SuiteCRM</a></li>
     <li><a href="#install-dolibarr-on-ubuntu">Install Dolibarr on Ubuntu</a></li>
     <li><a href="#create-suitecrm-docker-container">Edit Hosts File on Ubuntu</a></li>
-    <li><a href="#create-dolibarr-docker-container">Edit Hosts File on Ubuntu</a></li>
+    <li><a href="#create-dolibarr-docker-container">Create Dolibarr Docker Container</a></li>
     <li><a href="#create-suitecrm-docker-container">Edit Hosts File on Ubuntu</a></li>
   </ol>
 </details>
@@ -478,3 +478,65 @@ Type in example.com, localhost/ or 127.0.0.1 on your browser address bar.
 
 
 ![doli3](https://user-images.githubusercontent.com/88755620/129172272-c1084286-8a84-4993-8c30-d11bbdd429b2.PNG)
+
+
+
+
+
+## Create SuiteCRM Docker Container
+
+
+
+
+
+
+## Create Dolibarr Docker Container
+
+The Dolibarr package that you downloaded includes a .yml file that you can use to deploy dolibarr on a docker container. This .yml file is a text file containing the set of instructions to create the docker image of dolibarr. If you don't have dolibarr, click [here](https://www.dolibarr.org/downloads.php) to download.
+
+### Step 1: Change Directory
+Change your working direcotry to where you have unziped dolibarr. The yml file is located inside /build/docker on the folder of dolibarr that you unziped. Enter the following command to change directory. In my case, the dolibarr folder can be found at:
+```console
+cd /var/www/html/dolibarr-13.0.4/build/docker
+```
+Now show the list of files inside the directory to make sure that the yml file is there by typing ls.
+```console
+ls
+```
+### Step 2: Use the yml to create the docker image
+```console
+sudo docker-compose up -d
+```
+This process will take a couple of minutes. Once the process is done, you can list the docker containers that was created and already running by entering this command:
+```console
+sudo docker ps
+```
+### Step 3: Finish the installation with the web-based install wizard
+On your address bar, type:
+```console
+127.0.0.1
+```
+or
+```console
+localhost/
+```
+Provide the required information. Most of the fields are already filled automatically. Click next to proceed.
+
+![doli1](https://user-images.githubusercontent.com/88755620/129210194-449fe53b-3a08-4b6c-8148-e2dffdf13ee4.PNG)
+
+Use the name of your mariadb docker container that is running under the database server field. Click next.
+
+![doli2](https://user-images.githubusercontent.com/88755620/129210319-6af8baeb-17bc-4987-a55d-49afc951547a.PNG)
+
+![doli3](https://user-images.githubusercontent.com/88755620/129210329-f878dcb4-4263-45bc-b1c7-03c90748006e.PNG)
+
+Setup the admin credentials that you will use to log in. Click next then log in to dolibarr.
+
+![doli4](https://user-images.githubusercontent.com/88755620/129210340-e17563fd-8963-41fc-a91b-0ea220a4fec1.PNG)
+
+Finish the installation by filling in the Company/Organization
+
+![doli5](https://user-images.githubusercontent.com/88755620/129210493-155c0c95-db58-4391-9940-da83b33df705.PNG)
+
+
+
