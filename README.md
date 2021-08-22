@@ -15,7 +15,15 @@
     <li><a href="#install-dolibarr-on-ubuntu">Install Dolibarr on Ubuntu</a></li>
     <li><a href="#create-suitecrm-docker-container">Create SuiteCRM Docker Container</a></li>
     <li><a href="#create-dolibarr-docker-container">Create Dolibarr Docker Container</a></li>
-    <li><a href="#edit-dolibarr-for-vendor-management">Edit Dolibarr for Vendor Management</a></li>
+    <li><a href="#edit-dolibarr-for-vendor-management">Edit Dolibarr for Vendor Management</a>
+    <ul>
+        <li><a href="#filtering-data">Filtering Data</a></li>
+        <li><a href="#mass-email">Mass Email</a></li>
+        <li><a href="#purchase-order-format">Purchase Order Format</a></li>
+        <li><a href="#labels">Labels</a></li>
+        <li><a href="#customers-and-prospects">Customers and Prospects</a></li>
+      </ul>
+    </li>
   </ol>
 </details>
 
@@ -482,9 +490,7 @@ Type in example.com, localhost/ or 127.0.0.1 on your browser address bar.
 
 
 
-
 ## Create SuiteCRM Docker Container
-
 
 
 
@@ -537,6 +543,10 @@ Setup the admin credentials that you will use to log in. Click next then log in 
 Finish the installation by filling in the Company/Organization
 
 ![doli5](https://user-images.githubusercontent.com/88755620/129210493-155c0c95-db58-4391-9940-da83b33df705.PNG)
+
+
+
+## Edit Dolibarr for Vendor Management
 
 
 
