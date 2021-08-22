@@ -11,6 +11,11 @@
     <li><a href="#installing-lamp-stack-on-ubuntu">Installing LAMP stack on Ubuntu</a></li>
     <li><a href="#installing-suitecrm-on-ubuntu">Installing SuiteCRM on Ubuntu</a></li>
     <li><a href="#edit-hosts-file-on-ubuntu">Edit Hosts File on Ubuntu</a></li>
+    <li><a href="#renaming-top-bar-menu-and-modules-suitecrm">Renaming Top Bar Menu and Modules SuiteCRM</a></li>
+    <li><a href="#install-dolibarr-on-ubuntu">Edit Hosts File on Ubuntu</a></li>
+    <li><a href="#create-suitecrm-docker-container">Edit Hosts File on Ubuntu</a></li>
+    <li><a href="#create-dolibarr-docker-container">Edit Hosts File on Ubuntu</a></li>
+    <li><a href="#create-suitecrm-docker-container">Edit Hosts File on Ubuntu</a></li>
   </ol>
 </details>
 
@@ -24,6 +29,10 @@
 
 <!-- GETTING STARTED -->
 ## Ubuntu Virtual Machine
+
+
+
+
 
 
 
@@ -186,6 +195,11 @@ Add this to the file:
 Press Ctrl+O to save, then press Enter to confirm. To exit, press Ctrl+X
 On you browser address bar, type localhost/info.php or 127.0.0.1/info.php to check the your server's PHP information.
 
+
+
+
+
+
 <!-- INSTALLING SUITECRM -->
 ## Installing SuiteCRM on Ubuntu
 
@@ -347,3 +361,39 @@ You can change the suitecrm.example.com according to your preference.
 127.0.0.1       suitecrm.example.com
 ```
 Save and close the file.
+
+
+
+## Renaming Top Bar Menu and Modules SuiteCRM
+
+### Step 1: Go to Admin Section
+This can be found by clicking the person icon on the top right corner then select admin from the dropdown menu.
+
+
+![admin](https://user-images.githubusercontent.com/88755620/129151370-daffe077-5efa-482b-b61a-f94df24223f8.png)
+
+
+### Step 2: Edit the Top Menu Bar
+Under the developer tools, select Configure Module Menu Filters.
+
+
+![admin2](https://user-images.githubusercontent.com/88755620/129152361-3a565440-86e8-4bc1-926b-21726de29063.png)
+
+Then start modifying the labels. You can also delete or add to the top bar menu. Click Save and Deploy to save the changes.
+
+![admin3](https://user-images.githubusercontent.com/88755620/129153075-45829928-2f66-4a12-b48f-d79d38ae0180.png)
+
+### Step 3: Edit Labels of Modules
+Go back to developer tools and select Rename Modules.
+
+
+![admin5](https://user-images.githubusercontent.com/88755620/129154423-7867d6df-5f8d-4c95-9c98-e49e1289e501.png)
+
+
+Start renaming the modules according to your preference.
+
+
+![admin4](https://user-images.githubusercontent.com/88755620/129154038-e4da6873-5127-4b8e-b38c-4400c010db4f.png)
+
+
+
