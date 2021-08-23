@@ -736,7 +736,24 @@ While the others are from dolibarr user database, email from file and emails inp
 
 ## Purchase Order Format
 
+
 ## Labels
+
+### Step 1: Navigate to Menus
+
+Go to Home -> Setup ->  Menus
+
+### Step 2: Change the Menu Manager
+
+Fro the drop-down menu nammed "standard menu manager" and "smartphone menu manager", select "auguria menu".
+Click "save" button.
+
+### Step 3: Edit the Labels
+
+Move to "Menu Editor" tab and select the Label that you want to rename.
+Find the "Title" text field and change it to the new name that you want.
+Click "save" button to save the changes.
+
 
 ## Customers and Prospects
 
