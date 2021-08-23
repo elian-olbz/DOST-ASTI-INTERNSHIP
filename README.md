@@ -1,13 +1,7 @@
-<!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#ubuntu-virtual-machine">Ubuntu Virtual Machine</a>
-    </li>
+    <li><a href="#ubuntu-virtual-machine">Ubuntu Virtual Machine</a> </li>
     <li><a href="#installing-lamp-stack-on-ubuntu">Installing LAMP stack on Ubuntu</a></li>
     <li><a href="#installing-suitecrm-on-ubuntu">Installing SuiteCRM on Ubuntu</a></li>
     <li><a href="#edit-hosts-file-on-ubuntu">Edit Hosts File on Ubuntu</a></li>
@@ -28,14 +22,7 @@
 </details>
 
 
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-
-
-
-<!-- GETTING STARTED -->
+<!-- Ubuntu VM -->
 ## Ubuntu Virtual Machine
 
 
@@ -546,7 +533,60 @@ Finish the installation by filling in the Company/Organization
 
 
 
+
 ## Edit Dolibarr for Vendor Management
 
+## Filtering Data
+Third parties in Dolibarrr include Vendors, Customers and Prospects. Having the capability to filter these data can be very efficient and convenient for the person using Dolibarr.
+There are 2 ways that we can use to filter the third party data in Dolibarr. The first one is through dictionary and the other one is using the tag module.
+## Method 1: Adding new Third-paty type on Dictionaries Setup
+### Step 1: Go to Third-party types
+Go to Home -> Setup -> Dictionaries -> Third-party types
+
+### Step 2: Add new Third-party type
+Provide the empty fields such as Code, Labeland Country with anything you want. Click save to the new third-party.
+
+![last1](https://user-images.githubusercontent.com/88755620/129547709-9f057781-5c7f-453a-9ba3-4b54b18d6f69.PNG)
+
+### Step 3: Select this Third-party type
+If you have an existing third-party you can attach this third-party type by modifying it. You can find this on the lower portion of the webpage. you can also label a new third that you are going to create with this feature. Click save for changes to be saved.
+
+![Screenshot (11)](https://user-images.githubusercontent.com/88755620/129548986-08815109-dc06-4082-a543-4cf154c07a34.png)
+
+### Step 4: Filter the third-parties
+Select the third-party type that you cretaed and click on search icon on the upper-right corner.
+
+![Screenshot (12)](https://user-images.githubusercontent.com/88755620/129549743-2b92a230-9090-414a-ba4a-7141c6dfd5be.png)
+
+![last2](https://user-images.githubusercontent.com/88755620/129549960-3b6d4bcb-66f9-450c-8f8e-043327ef2aa4.PNG)
+You can see that the number (5) on the list of third parties changed (1) indicating that only one third party is labeled with the third-party type that I created in this tutorial.
+## Method 2: Using the Tag module to filter Third-parties
+### Step 1: Enable the Module
+Go to Home -> Setup -> Modules/Application -> Multi-modules tools. Enable the module.
+
+### Step 2: Add/create new tag
+You can find the interface of tag module under the Third-parties. After clicking third-parties on the top bar menu, look for it on the lower-left part of the webpage.
+
+![last3](https://user-images.githubusercontent.com/88755620/129551734-4131d137-ca6f-4eee-ba66-d20ac8242f5f.PNG)
+
+Click on New tag/category to create one.
+
+Enter the Reference name that you want and you can leave other fields empty. Click on Create this tag/category to proceed.
+
+
+![last4](https://user-images.githubusercontent.com/88755620/129552286-f6567b1f-f158-45a7-9054-a2a2415bcba4.PNG)
+
+You can find a dropdown menu on the lower part. Select the third-party that you want to add this tag to. Click on Add to tag/category to save.
+
+![Screenshot (13)](https://user-images.githubusercontent.com/88755620/129552680-8c4512a7-11d3-4c12-ad45-56097d8a2eb7.png)
+
+### Step 3: Filter third parties
+Go to list third-parties and on the upper menu, you can find the Vendors tag/category. Select the tag that you created.
+
+![Screenshot (14)](https://user-images.githubusercontent.com/88755620/129553467-c6e41269-acbf-418c-b7f3-9e1a98bd22c2.png)
+
+Click on the search button on the upper-right corner to show the list of third-parties with this tag/category.
+
+![last5](https://user-images.githubusercontent.com/88755620/129553484-82f4a9d2-86f1-48cb-83c5-bba4ed625f74.PNG)
 
 
