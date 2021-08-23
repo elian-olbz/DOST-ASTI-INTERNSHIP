@@ -735,6 +735,17 @@ There are 5 ways to add the reciepients of email in dolibarr. To add multiple re
 While the others are from dolibarr user database, email from file and emails input by user.
 
 ## Purchase Order Format
+This method can be used to create new pruchase order format from existing template inside dolibarr.
+Do not modify the existing templates.
+
+### Step 1: Copy and paste file pdf_muscadet.modules.php
+### Step 2: Rename the copy as you desire pdf_example_.modules.php
+### Step 3: Edit and make the following changes in the code:
+Rename 'Class pdf_muscadet { ' to 'Class pdf_example { '
+
+
+Rename constant $this->name to match your new template name. For example for 'muscadet' template, change line '$this->name = "muscadet";' to '$this->name = "example";'.
+### Step 4: Save file. Now the template will be available in the list of models in Dolibarr.
 
 
 ## Labels
