@@ -25,9 +25,55 @@
 <!-- Ubuntu VM -->
 ## Ubuntu Virtual Machine
 
+### Step 1: Download Oracle VirtualBox
+Download [VirtualBox](https://www.virtualbox.org/wiki/Downloads) from their official website.
+Look for the platform package that is compatible for your operating system.
+
+### Step 2: Install VirtualBox
+Go to the location where you downloaded VirtualBox and doubble-clickit to run and start the installation.
+The setup window will appear.Click the "next" button to proceed.
+Choose the location where you want to install VirtualBox the click "next".
+You can leave the next page as default and click next. Click "yes" to install.
+
+### Step 3: Download Ubuntu
+Download [Ubuntu](https://ubuntu.com/download/desktop) from their official website.
+Look for the Ubuntu 20.04 LTS that is compatible for your operating system.
 
 
+### Step 4: Create Virtual Machine 
+Open VirtualBox and click on the "New" button.
+Give name for your machine with its location. Select the type of your machine as Linux under the drop-down menu and the version as Ubuntu.
 
+### Step 5: Allocate the Memory
+You can set the RAM based on the recommended memory size. These can still be changed after you finished the setup process.
+Click "next" to proceed.
+
+Select "Create a virtual hard disk now" option and click on the "Create" button to proceed.
+Choose the "VDI (VirtualBox Disk Image)" option and click "Next".
+Click "next" again given that the selected option is "Dynamically allocated".
+Select the amount of space for your virtual machine and click the "Create" button.
+
+### Step 6: Attach the ISO
+Select the Virtual Machine that you created and click "start" button with the green arrow icon on the top.
+A "select start-up disk" screen will appear in which you will be able to mount the ISO file that you downloaded earlier.
+Click the folder icon on the right to locate the ISO. Click "start" to begin the installation.
+
+### Step 7: Finish installation with the install wizard
+Select your language and click "Install Ubuntu"
+Select your desired keyboard layout.
+Use the default option as "Normal Installation" with the "Download updates while installing Ubuntu" and click on the "Continue" button.
+Select the default option as the "Erase disk and Install Ubuntu" and click on the "Install Now" option to proceed.
+A warning prompt will appear on the screen and click on the "Continue" button to ignore this warning.
+Choose your time zone on the map and click Continue.
+Set your user account here by filling the necessary details and click on the "Continue" button to proceed.
+Now, the installation process will begin.
+After the installation completed, click "restart now".
+
+### Step 8: Change the Network Setting
+Change the Network adapter so that your virtual machine can connect to the internet.
+On the upper-left corner, go to Machine -> Settings -> Network.
+Under the Adapter 1 there is a drop-down menu named "Attached to:". Select "Bridged Adapter" and select the name of your adapter.
+Click "ok" to save.
 
 
 
