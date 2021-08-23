@@ -711,4 +711,25 @@ Click on the search button on the upper-right corner to show the list of third-p
 
 ![last5](https://user-images.githubusercontent.com/88755620/129553484-82f4a9d2-86f1-48cb-83c5-bba4ed625f74.PNG)
 
+## Mass Email
+### Step 1: Enable Mass Emailing Module
+
+Go to Home -> Setup -> Modules/Application -> Interfaces with external systems
+You can find the interface of this module under the Tools on the top bar menu. 
+
+### Step 2: Create a new Emailing Card
+Below the Emailing section, click on "new emailing" to create a new one. 
+Provide the basic parts of the email like description, sender, etc. Click on the "recipients"tab after you finished the emailing card.
+
+### Step 3: Add the recipients
+There are 5 ways to add the reciepients of email in dolibarr. To add multiple recipients from third parties and contacts, you can use the tags drop-down menu which you created from the previous tutorial.
+While the others are from dolibarr user database, email from file and emails input by user.
+
+## Purchase Order Format
+
+## Lables
+
+## Customers and Prospects
+
+
 
