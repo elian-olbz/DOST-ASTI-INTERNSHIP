@@ -524,8 +524,84 @@ Type in example.com, localhost/ or 127.0.0.1 on your browser address bar.
 
 
 ## Create SuiteCRM Docker Container
+ 
+### Step 1: Download SuiteCRM docker image
+```console
+$ docker pull bitnami/suitecrm:latest
+```
+
+### Step 2: Create a network
+
+```console
+$ docker network create suitecrm-network
+```
+
+### Step 3: Create a volume for MariaDB persistence and create a MariaDB container
+
+```console
+$ docker volume create --name mariadb_data
+$ docker run -d --name mariadb \
+  --env ALLOW_EMPTY_PASSWORD=yes \
+  --env MARIADB_USER=bn_suitecrm \
+  --env MARIADB_PASSWORD=bitnami \
+  --env MARIADB_DATABASE=bitnami_suitecrm \
+  --network suitecrm-network \
+  --volume mariadb_data:/bitnami/mariadb \
+  bitnami/mariadb:latest
+```
+
+### Step 4: Create volumes for SuiteCRM persistence and launch the container
+
+```console
+$ docker volume create --name suitecrm_data
+$ docker run -d --name suitecrm \
+  -p 8080:8080 -p 8443:8443 \
+  --env ALLOW_EMPTY_PASSWORD=yes \
+  --env SUITECRM_DATABASE_USER=bn_suitecrm \
+  --env SUITECRM_DATABASE_PASSWORD=bitnami \
+  --env SUITECRM_DATABASE_NAME=bitnami_suitecrm \
+  --network suitecrm-network \
+  --volume suitecrm_data:/bitnami/suitecrm \
+  bitnami/suitecrm:latest
+```
+
+Access your application at *http://your-ip/*
+
+### Persisting your application
 
 
+### Step 1: Create a network (if it does not exist)
+
+```console
+$ docker network create suitecrm-network
+```
+
+### Step 2. Create a MariaDB container with host volume
+
+```console
+$ docker run -d --name mariadb \
+  --env ALLOW_EMPTY_PASSWORD=yes \
+  --env MARIADB_USER=bn_suitecrm \
+  --env MARIADB_PASSWORD=bitnami \
+  --env MARIADB_DATABASE=bitnami_suitecrm \
+  --network suitecrm-network \
+  --volume /path/to/mariadb-persistence:/bitnami/mariadb \
+  bitnami/mariadb:latest
+```
+
+### Step 3. Create the SuiteCRM container with host volumes
+
+```console
+$ docker run -d --name suitecrm \
+  -p 8080:8080 -p 8443:8443 \
+  --env ALLOW_EMPTY_PASSWORD=yes \
+  --env SUITECRM_DATABASE_USER=bn_suitecrm \
+  --env SUITECRM_DATABASE_PASSWORD=bitnami \
+  --env SUITECRM_DATABASE_NAME=bitnami_suitecrm \
+  --network suitecrm-network \
+  --volume /path/to/suitecrm-persistence:/bitnami/suitecrm \
+  bitnami/suitecrm:latest
+```
 
 
 
