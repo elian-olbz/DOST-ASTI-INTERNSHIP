@@ -756,6 +756,24 @@ Click "save" button to save the changes.
 
 
 ## Customers and Prospects
+This method only disable the user from creating new customer or prospects while the existing customers or prospects will be moved to the "others" category of third-parties.
+### Step 1: Navigate to Other Setup
 
+Go to Home -> Setup ->  Other Setup
+
+### Step 2: Add new Scripts
+To disable customers, add the following:
+
+```console
+SOCIETE_DISABLE_CUSTOMERS
+```
+Set the value to 1 to enable it and add some comments. Click add to save the new entry.
+
+
+You can also do the same procedure with prospects:
+```console
+SOCIETE_DISABLE_PROSPECTS
+```
+Set the value to 1 to enable it and add some comments. Click add to save the new entry.
 
 
